@@ -95,8 +95,7 @@ impl Mmu {
         use super::cartridge::mbc2::Mbc2;
         use super::cartridge::mbc3::Mbc3;
 
-        let title =
-            core::str::from_utf8(&rom_data[0x134..0x13F]).map_or_else(|_| "Invalid Title", |v| v);
+        let title = core::str::from_utf8(&rom_data[0x134..0x13F]).unwrap_or("Invalid Title");
         let rom_size = rom_data[0x148];
         let ram_size = rom_data[0x149];
         info!("Cartridge Info:");

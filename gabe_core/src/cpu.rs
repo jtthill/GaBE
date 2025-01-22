@@ -1867,7 +1867,7 @@ impl Cpu {
         self.reg.set_flag(Flag::N, false);
         self.reg.set_flag(Flag::H, false);
         self.reg.set_flag(Flag::C, false);
-        (r >> 4) | (r << 4)
+        r.rotate_right(4)
     }
 
     /// Shift register `r` right into the Carry flag. Bit 7 set to 0.
@@ -1957,7 +1957,7 @@ impl Cpu {
 #[cfg(test)]
 mod cpu_tests {
 
-    use std::io::{BufReader, Read};
+    use std::io::BufReader;
 
     use super::*;
     #[test]
